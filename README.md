@@ -29,3 +29,16 @@ It's much less wordy than writing out things like:
 ```ruby
   get '/submissions/:id/publish' to: 'submissions#publish', as: submission_publish
 ```
+
+### 24th
+Today I learned that you can delete a remote git branch like so:
+
+```bash
+  git checkout old_branch
+  git branch -m old_branch new_branch
+
+  git push origin :old_branch
+
+  git push origin new_branch
+```
+The `:` in front of the old branch name deletes the remote branch
