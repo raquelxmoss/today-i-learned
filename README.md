@@ -42,3 +42,35 @@ Today I learned that you can delete a remote git branch like so:
   git push origin new_branch
 ```
 The `:` in front of the old branch name deletes the remote branch
+
+### 29th (Leap day!)
+
+Today I learned that, contrary to what Jon told me once, Rails' `render: 'partial_name'` and `render partial: 'partial_name'` are NOT the same.
+
+When sending along local variables, it's probably a better idea to use `render partial: 'partial_name'`
+
+Here's why:
+
+  If you are using the term partial: in your render, for example like so:
+
+  ```ruby
+    = render partial: 'partial_name', locals: {foo: 'x', bar: 'y'}
+  ```
+
+  Then your locals will be available simply as foo and bar, directly:
+
+  ```ruby
+    = foo
+    = bar
+  ```
+
+  The other syntax doesn't quite work like that! You need to access your variables in a different (uglier) way
+
+  ```ruby
+    render 'partial_name', locals: {foo: 'x', bar: 'y'}
+  ```
+
+  ```ruby
+    = locals[:foo]
+    = locals[:bar]
+  ```
